@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4 (Python 3.9.13 on win32)" generated="2026-02-03T11:48:24.723442" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\All_document\pycharm\Robot_framework\tests">
+<suite id="s1-s1" name="Testdemo7" source="C:\All_document\pycharm\Robot_framework\tests\testdemo7.robot">
+<test id="s1-s1-t1" name="Play around with Dictionary" line="9">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-03T11:48:25.391448" level="INFO">&amp;{data} = { name=rahulshetty | course=robot | website=rahulshettyacademy.com }</msg>
+<var>&amp;{data}</var>
+<arg>name=rahulshetty</arg>
+<arg>course=robot</arg>
+<arg>website=rahulshettyacademy.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.388087" elapsed="0.003361"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-03T11:48:25.393185" level="INFO">{'name': 'rahulshetty', 'course': 'robot', 'website': 'rahulshettyacademy.com'}</msg>
+<arg>${data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.392078" elapsed="0.001107"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${data}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.393185" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-03T11:48:25.394287" level="INFO">rahulshetty</msg>
+<arg>${data}[name]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.394287" elapsed="0.000000"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-03T11:48:25.395423" level="INFO">${url} = rahulshettyacademy.com</msg>
+<var>${url}</var>
+<arg>${data}</arg>
+<arg>website</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.394287" elapsed="0.001136"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-03T11:48:25.396529" level="INFO">rahulshettyacademy.com</msg>
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.395423" elapsed="0.001106"/>
+</kw>
+<tag>API</tag>
+<status status="PASS" start="2026-02-03T11:48:25.386050" elapsed="0.010479"/>
+</test>
+<test id="s1-s1-t2" name="Add Book into Library DataBase" line="18">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-03T11:48:25.399019" level="INFO">&amp;{req_body} = { name=RobotFramework | isbn=982059 | aisle=324059 | author=rahulshetty }</msg>
+<var>&amp;{req_body}</var>
+<arg>name=${book_name}</arg>
+<arg>isbn=982059</arg>
+<arg>aisle=324059</arg>
+<arg>author=rahulshetty</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.397609" elapsed="0.001410"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-02-03T11:48:26.902677" level="INFO">POST Request : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ path_url=/Library/Addbook.php 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '88', 'Content-Type': 'application/json'} 
+ body=b'{"name": "RobotFramework", "isbn": "982059", "aisle": "324059", "author": "rahulshetty"}' 
+ </msg>
+<msg time="2026-02-03T11:48:26.903847" level="INFO">POST Response : url=https://rahulshettyacademy.com/Library/Addbook.php 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 03 Feb 2026 06:18:26 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Strict-Transport-Security': 'max-age=604800; includeSubDomains', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '48', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body={"Msg":"successfully added","ID":"982059324059"} 
+ </msg>
+<msg time="2026-02-03T11:48:26.903847" level="INFO">C:\Users\smjagtap\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'rahulshettyacademy.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-02-03T11:48:26.903847" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${base_url}/Library/Addbook.php</arg>
+<arg>json=${req_body}</arg>
+<arg>verify=${False}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-02-03T11:48:25.400064" elapsed="1.503783"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-03T11:48:26.907838" level="INFO">{'Msg': 'successfully added', 'ID': '982059324059'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.904848" elapsed="0.002990"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.908835" elapsed="0.002169"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-03T11:48:26.913311" level="INFO">${book_id} = 982059324059</msg>
+<var>${book_id}</var>
+<arg>${response.json()}</arg>
+<arg>ID</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.911004" elapsed="0.002307"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2026-02-03T11:48:26.915388" level="INFO">${book_id} = 982059324059</msg>
+<arg>${book_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.913311" elapsed="0.002641"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-03T11:48:26.917393" level="INFO">982059324059</msg>
+<arg>${book_id}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.915952" elapsed="0.001441"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>successfully added</arg>
+<arg>${response.json()}[Msg]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.918399" elapsed="0.002395"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.920794" elapsed="0.001019"/>
+</kw>
+<tag>API</tag>
+<status status="PASS" start="2026-02-03T11:48:25.397609" elapsed="1.525213"/>
+</test>
+<test id="s1-s1-t3" name="Get the Book Details which got added" line="30">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-02-03T11:48:27.074906" level="INFO">GET Request : url=https://rahulshettyacademy.com/Library/GetBook.php?ID=982059324059 
+ path_url=/Library/GetBook.php?ID=982059324059 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-03T11:48:27.076029" level="INFO">GET Response : url=https://rahulshettyacademy.com/Library/GetBook.php?ID=982059324059 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 03 Feb 2026 06:18:27 GMT', 'Server': 'Apache/2.4.52 (Ubuntu)', 'Strict-Transport-Security': 'max-age=604800; includeSubDomains', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Max-Age': '3600', 'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With', 'Content-Length': '88', 'Keep-Alive': 'timeout=5, max=99', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json;charset=UTF-8'} 
+ body=[{"book_name":"RobotFramework","isbn":"982059","aisle":"324059","author":"rahulshetty"}] 
+ </msg>
+<msg time="2026-02-03T11:48:27.077039" level="INFO">C:\Users\smjagtap\AppData\Local\Programs\Python\Python39\lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'rahulshettyacademy.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-02-03T11:48:27.077039" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<var>${get_response}</var>
+<arg>${base_url}/Library/GetBook.php</arg>
+<arg>params=ID=${book_id}</arg>
+<arg>verify=${False}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-02-03T11:48:26.927937" elapsed="0.149102"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-03T11:48:27.079462" level="INFO">[{'book_name': 'RobotFramework', 'isbn': '982059', 'aisle': '324059', 'author': 'rahulshetty'}]</msg>
+<arg>${get_response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-03T11:48:27.078362" elapsed="0.001100"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${book_name}</arg>
+<arg>${get_response.json()}[0][book_name]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-02-03T11:48:27.079462" elapsed="0.001585"/>
+</kw>
+<tag>API</tag>
+<status status="PASS" start="2026-02-03T11:48:26.923818" elapsed="0.157229"/>
+</test>
+<status status="PASS" start="2026-02-03T11:48:24.876925" elapsed="2.205886"/>
+</suite>
+<status status="PASS" start="2026-02-03T11:48:24.733586" elapsed="2.350336"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" skip="0">API</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="3" fail="0" skip="0">Tests</stat>
+<stat name="Testdemo7" id="s1-s1" pass="3" fail="0" skip="0">Tests.Testdemo7</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
